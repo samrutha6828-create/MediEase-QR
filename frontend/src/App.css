@@ -1,0 +1,800 @@
+/* Global container & typography */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #f4f6f8; /* Soft light background */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  color: #1a1a1a;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: #004488;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  color: #333;
+}
+
+/* Home connection status card */
+.status-card {
+  background-color: #ffffff;
+  border: 4px solid #cccccc;
+  border-radius: 16px;
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.status-card h2 {
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.status {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.status-connected {
+  color: #007700;
+}
+
+.status-disconnected {
+  color: #aa0000;
+}
+
+/* Patient welcome page styles - high contrast, extra large */
+.patient-welcome-container {
+  background-color: #ffffff; /* pure white background for extra clean look */
+  padding: 40px 20px;
+  justify-content: flex-start;
+  padding-top: 15vh;
+}
+
+.main-title {
+  font-size: 3.5rem;
+  color: #004488;
+  font-weight: 800;
+  margin: 0 0 10px 0;
+  letter-spacing: -1px;
+}
+
+.patient-subtitle {
+  font-size: 1.8rem;
+  color: #333333;
+  line-height: 1.4;
+  margin-bottom: 8vh;
+  font-weight: 500;
+}
+
+.large-primary-btn {
+  background-color: #0066cc; /* High contrast bright blue button */
+  color: #ffffff;
+  font-size: 2.2rem;
+  font-weight: 800;
+  padding: 25px 40px;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 102, 204, 0.35);
+  transition: background-color 0.2s, transform 0.1s;
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.large-primary-btn:hover {
+  background-color: #0052a3;
+}
+
+.large-primary-btn:active {
+  transform: scale(0.98);
+}
+
+/* Forms & Input Groups */
+.patient-form {
+  width: 100%;
+  max-width: 450px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.step-title {
+  font-size: 2.2rem;
+  color: #004488;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 8px;
+}
+
+.input-group input {
+  font-size: 1.5rem;
+  padding: 18px;
+  border: 3px solid #666666;
+  border-radius: 12px;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.input-group input:focus {
+  border-color: #0066cc;
+  box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.2);
+}
+
+/* Validation Errors */
+.validation-error {
+  color: #aa0000;
+  font-size: 1.3rem;
+  font-weight: bold;
+  background-color: #ffe6e6;
+  border: 2px solid #aa0000;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Back Button */
+.back-btn {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: #004488;
+  font-size: 1.6rem;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 10px 0;
+  margin-bottom: 30px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.back-btn:hover {
+  color: #002244;
+  text-decoration: underline;
+}
+
+/* Choice Lists (Departments / Doctors) */
+.patient-flow-list {
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.large-choice-btn {
+  background-color: #ffffff;
+  border: 4px solid #004488;
+  color: #004488;
+  font-size: 1.8rem;
+  font-weight: 800;
+  padding: 22px 30px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.large-choice-btn:hover, .large-choice-btn:focus {
+  background-color: #004488;
+  color: #ffffff;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0, 68, 136, 0.3);
+}
+
+.large-choice-btn:active {
+  transform: scale(0.98);
+}
+
+.selected-info {
+  font-size: 1.3rem;
+  color: #555555;
+  margin: -10px 0 15px 0;
+  text-align: center;
+  font-weight: 600;
+}
+
+.loading-text {
+  font-size: 1.4rem;
+  color: #666666;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Confirm Details Card */
+.confirm-details-card {
+  background-color: #ffffff;
+  border: 4px solid #004488;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 30px;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.confirm-label {
+  font-size: 1.2rem;
+  color: #666666;
+  margin: 0 0 5px 0;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.confirm-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin: 0 0 20px 0;
+}
+
+.confirm-value:last-child {
+  margin-bottom: 0;
+}
+
+/* Token Display Box */
+.token-display-box {
+  background-color: #f0f7ff;
+  border: 4px solid #0066cc;
+  border-radius: 24px;
+  padding: 40px 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.1);
+}
+
+.token-label {
+  font-size: 1.4rem;
+  color: #004488;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 0 10px 0;
+}
+
+.giant-token-text {
+  font-size: 6rem;
+  font-weight: 900;
+  color: #0066cc;
+  margin: 0 0 15px 0;
+  letter-spacing: -2px;
+}
+
+.token-subinfo {
+  font-size: 1.5rem;
+  color: #333333;
+  margin: 5px 0 0 0;
+  font-weight: 600;
+}
+
+/* Queue Status Card */
+.queue-status-card {
+  background-color: #ffffff;
+  border: 4px solid #cccccc;
+  border-radius: 24px;
+  padding: 40px 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.queue-title-label {
+  font-size: 1.4rem;
+  color: #666666;
+  font-weight: 700;
+  margin: 0 0 5px 0;
+}
+
+.large-token-highlight {
+  font-size: 4.5rem;
+  font-weight: 900;
+  color: #1a1a1a;
+  margin: 0 0 15px 0;
+}
+
+.divider {
+  border: 0;
+  border-top: 3px solid #eeeeee;
+  margin: 20px 0;
+}
+
+.queue-label {
+  font-size: 1.3rem;
+  color: #666666;
+  font-weight: 700;
+  margin: 0 0 5px 0;
+}
+
+.serving-token-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #007700;
+  margin: 0;
+}
+
+.people-ahead-text {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #cc6600;
+  margin: 0 0 5px 0;
+}
+
+.wait-time-text {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #333333;
+  margin: 0 0 15px 0;
+}
+
+.next-indicator-text {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #007700;
+  margin: 0 0 15px 0;
+}
+
+.instruction-text {
+  font-size: 1.3rem;
+  color: #666666;
+  font-style: italic;
+  margin: 15px 0 0 0;
+  font-weight: 600;
+}
+
+/* YOUR TURN Screen */
+.your-turn-container {
+  background-color: #fff9e6; /* soft yellow background */
+  border: 6px solid #ffcc00;
+  border-radius: 28px;
+  padding: 40px 20px;
+  box-shadow: 0 12px 30px rgba(255, 204, 0, 0.25);
+  animation: pulse-border 2s infinite alternate;
+}
+
+.your-turn-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #cc6600;
+  margin: 0 0 10px 0;
+  letter-spacing: -1px;
+}
+
+.your-turn-token {
+  font-size: 5.5rem;
+  font-weight: 900;
+  color: #1a1a1a;
+  margin: 0 0 30px 0;
+}
+
+.room-card {
+  background-color: #ffffff;
+  border: 4px solid #ffcc00;
+  border-radius: 20px;
+  padding: 25px;
+}
+
+.room-label {
+  font-size: 1.5rem;
+  color: #666666;
+  margin: 0 0 5px 0;
+  font-weight: 700;
+}
+
+.room-number {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #004488;
+  margin: 0;
+}
+
+@keyframes pulse-border {
+  from {
+    border-color: #ffcc00;
+    box-shadow: 0 12px 30px rgba(255, 204, 0, 0.2);
+  }
+  to {
+    border-color: #e6b800;
+    box-shadow: 0 12px 35px rgba(255, 180, 0, 0.45);
+  }
+}
+
+/* ==================================================
+   STAFF DASHBOARD STYLES — Professional Hospital UI
+   ================================================== */
+
+.staff-dashboard-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 30px 20px 60px 20px;
+  background-color: #f4f6f9;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #1e293b;
+  box-sizing: border-box;
+}
+
+/* Header */
+.staff-header {
+  margin-bottom: 24px;
+  text-align: left;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 16px;
+}
+
+.staff-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #003366;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.5px;
+}
+
+.staff-subtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #64748b;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.staff-error-banner {
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Base Card Styling */
+.staff-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  text-align: left;
+}
+
+.card-section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #003366;
+  margin: 0 0 18px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 10px;
+}
+
+.empty-state-text {
+  font-size: 1.1rem;
+  color: #64748b;
+  font-style: italic;
+  margin: 10px 0 0 0;
+}
+
+/* Currently Serving Card */
+.staff-currently-serving-card {
+  border-left: 5px solid #0066cc;
+}
+
+.currently-serving-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.cs-detail-box {
+  background-color: #f8fafc;
+  border: 1px solid #edf2f7;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cs-detail-box.token-box {
+  background-color: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.cs-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.cs-token-value {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #0066cc;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.cs-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+/* Controls Panel */
+.staff-controls-panel {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.staff-btn {
+  flex: 1;
+  padding: 18px 24px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.btn-call-next {
+  background-color: #003366;
+  color: #ffffff;
+}
+
+.btn-call-next:hover {
+  background-color: #002244;
+  box-shadow: 0 6px 16px rgba(0, 51, 102, 0.25);
+}
+
+.btn-call-next:active {
+  transform: translateY(1px);
+}
+
+.btn-serve-patient {
+  background-color: #ffffff;
+  color: #003366;
+  border: 2px solid #003366;
+}
+
+.btn-serve-patient:hover {
+  background-color: #f1f5f9;
+}
+
+.btn-serve-patient:active {
+  transform: translateY(1px);
+}
+
+/* Queue Summary Card & Stats Grid */
+.staff-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.staff-stat-card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 16px 20px;
+  text-align: center;
+}
+
+.staff-stat-card.card-serving {
+  border-top: 3px solid #0066cc;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #64748b;
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+}
+
+.stat-value {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin: 0;
+}
+
+/* Assistance Requests Alerts Section */
+.staff-alerts-section {
+  border-left: 5px solid #dc2626;
+}
+
+.alerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.staff-alert-card {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.alert-badge {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #991b1b;
+  letter-spacing: 0.5px;
+}
+
+.alert-body-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  background-color: #ffffff;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #fee2e2;
+}
+
+.alert-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.alert-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #7f1d1d;
+  text-transform: uppercase;
+}
+
+.alert-val {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.alert-time {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.acknowledge-btn {
+  align-self: flex-start;
+  background-color: #dc2626;
+  color: #ffffff;
+  border: none;
+  font-size: 1rem;
+  font-weight: 800;
+  padding: 10px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.acknowledge-btn:hover {
+  background-color: #b91c1c;
+}
+
+/* Waiting Queue Table */
+.queue-table-wrapper {
+  overflow-x: auto;
+}
+
+.staff-queue-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+
+.staff-queue-table th {
+  background-color: #f8fafc;
+  color: #475569;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.staff-queue-table td {
+  padding: 16px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 1.05rem;
+  color: #1e293b;
+}
+
+.staff-queue-table tr.row-serving {
+  background-color: #eff6ff;
+  font-weight: 600;
+}
+
+.table-token {
+  font-weight: 800;
+  color: #004488;
+  font-size: 1.15rem;
+}
+
+.patient-age {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.badge-waiting {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.badge-current {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.badge-served {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .staff-controls-panel {
+    flex-direction: column;
+  }
+  
+  .staff-dashboard-container {
+    padding: 15px 12px 40px 12px;
+  }
+
+  .currently-serving-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
