@@ -1,18 +1,22 @@
-# Root Dockerfile for MediEase QR backend
-# Place this file at the root of the MediEase-QR project.
+FROM node:20
 
-FROM node:20-alpine
+WORKDIR /app
+
+COPY frontend/package*.json ./frontend/
+RUN cd frontend && npm install
+
+COPY frontend ./frontend
+RUN cd frontend && npm run build
+
+COPY backend/package*.json ./backend/
+RUN cd backend && npm install
+
+COPY backend ./backend
+
 WORKDIR /app/backend
 
-# Copy backend package files and install dependencies
-COPY backend/package*.json ./
-RUN npm install --production
-
-# Copy the backend source code
-COPY backend ./
+ENV NODE_ENV=production
 
 EXPOSE 3000
-ENV NODE_ENV=production
-ENV PORT=3000
 
 CMD ["node", "server.js"]
