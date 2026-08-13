@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 
+const BACKEND_URL = 'https://mediease-qr.onrender.com';
+
 function Home() {
   const [backendStatus, setBackendStatus] = useState('Checking...');
 
   useEffect(() => {
-    fetch('/api/health')
+    fetch(`${BACKEND_URL}/api/health`)
       .then(response => {
         if (!response.ok) throw new Error('Network response was not ok');
         return response.json();
