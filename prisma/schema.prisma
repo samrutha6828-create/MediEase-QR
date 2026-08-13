@@ -1,0 +1,100 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Hospital {
+  id                 String              @id @default(cuid())
+  name               String
+  code               String              @unique
+  address            String?
+  phone              String?
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  doctors            Doctor[]
+  appointments       Appointment[]
+  queues             QueueItem[]
+  assistanceRequests AssistanceRequest[]
+}
+
+model Patient {
+  id                 String              @id @default(cuid())
+  name               String
+  phone              String              @unique
+  age                Int?
+  patientId          String              @unique
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  appointments       Appointment[]
+  assistanceRequests AssistanceRequest[]
+}
+
+model Doctor {
+  id           String        @id @default(cuid())
+  name         String
+  specialty    String
+  department   String
+  room         String
+  isActive     Boolean       @default(true)
+  hospitalId   String
+  hospital     Hospital      @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  appointments Appointment[]
+}
+
+model Appointment {
+  id                String     @id @default(cuid())
+  appointmentNumber String     @unique
+  date              String
+  time              String
+  status            String     @default("CONFIRMED")
+  patientId         String
+  patient           Patient    @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  doctorId          String
+  doctor            Doctor     @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+  hospitalId        String
+  hospital          Hospital   @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  queueItem         QueueItem?
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+
+  @@index([patientId])
+  @@index([hospitalId])
+  @@index([status])
+}
+
+model QueueItem {
+  id            String      @id @default(cuid())
+  queueToken    String
+  position      Int
+  status        String      @default("WAITING")
+  appointmentId String      @unique
+  appointment   Appointment @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
+  hospitalId    String
+  hospital      Hospital    @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@index([hospitalId])
+  @@index([status])
+}
+
+model AssistanceRequest {
+  id          String   @id @default(cuid())
+  requestType String
+  status      String   @default("PENDING")
+  patientId   String
+  patient     Patient  @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  hospitalId  String
+  hospital    Hospital @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([hospitalId])
+  @@index([status])
+}
