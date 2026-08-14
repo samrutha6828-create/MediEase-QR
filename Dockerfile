@@ -2,7 +2,7 @@ FROM node:20-bookworm-slim
 
 WORKDIR /app
 
-# Install native compilation dependencies required to build sqlite3 from source inside Linux glibc 2.36
+# STEP 2 — Native Build Dependencies
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends \
     python3 \
@@ -14,31 +14,29 @@ RUN apt-get update -y && \
     ca-certificates && \
     rm -rf /var/lib/apt/lists/*
 
-# Copy dependency manifests
+# STEP 4 — Clean Install & Build sqlite3 From Source
 COPY package*.json ./
 COPY prisma ./prisma/
 
-# Force npm to compile native modules (sqlite3) from source in container glibc environment
 ENV npm_config_build_from_source=true
 
-# Clean install dependencies and force rebuild of native modules
-RUN npm ci && npm rebuild sqlite3 --build-from-source
+RUN npm install --build-from-source && \
+    npm rebuild sqlite3 --build-from-source
 
-# Generate Prisma Client
-RUN npx prisma generate
+# STEP 5 — Verify sqlite3 Native Module Loads Inside Container
+RUN node -e "require('sqlite3'); console.log('SQLITE3_NATIVE_LOAD_SUCCESS')"
 
-# Copy application source code
+# STEP 6 — Copy Application & Generate Prisma Client
 COPY . .
 
-# Set production environment
-ENV NODE_ENV=production
-
-# Build Next.js production bundle
+RUN npx prisma generate
 RUN npm run build
 
-# Default Railway PORT
+# STEP 7 — Network & Port Configuration
+ENV NODE_ENV=production
+ENV HOSTNAME=0.0.0.0
 ENV PORT=3000
 EXPOSE 3000
 
-# Start production server with database push and seed fallback
+# STEP 9 — Startup Command
 CMD ["sh", "-c", "npx prisma db push --accept-data-loss && npx prisma db seed && npm start -- -p ${PORT:-3000}"]

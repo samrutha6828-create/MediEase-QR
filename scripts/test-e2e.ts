@@ -69,19 +69,19 @@ async function runE2ETests() {
       age: 70,
     });
 
-    // Date 1: Valid future date (2 months from now)
+    // Date 1: Valid future date (2 months from now with unique time slot)
     const futureDate = new Date();
-    futureDate.setMonth(futureDate.getMonth() + 2);
+    futureDate.setDate(futureDate.getDate() + (Math.floor(Math.random() * 60) + 10));
     const validFutureDateStr = `${futureDate.getFullYear()}-${(futureDate.getMonth() + 1).toString().padStart(2, "0")}-${futureDate.getDate().toString().padStart(2, "0")}`;
 
     const apptFuture = await createAppointment({
       patientId: patient.id,
       doctorId: doctor.id,
       date: validFutureDateStr,
-      time: "10:30 AM",
+      time: "02:30 PM",
       hospitalCode: "MEDIEASE-HOSP-01",
     });
-    assert(apptFuture.status === "CONFIRMED", "Successfully booked appointment for 2 months in future");
+    assert(apptFuture.status === "CONFIRMED", "Successfully booked appointment for future date");
     assert(apptFuture.date === validFutureDateStr, "Appointment date persists exact future calendar date");
 
     // Date 2: Past date rejection check
